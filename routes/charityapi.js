@@ -42,6 +42,7 @@ router.put('/',function(req, res){
 		charity: req.body.charityName,
 		email: req.body.email,
 		address: req.body.address,
+		city: req.body.city,
 		state: req.body.state,
 		zip: req.body.zip,
 		dropoff: req.body.dropoff,
