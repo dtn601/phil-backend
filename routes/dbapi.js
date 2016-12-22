@@ -28,6 +28,14 @@ router.get('/',function(req, res){
 		}
 	});		
 });
+
+router.get('/getdonor',function(req,res){
+	var userId = req.user.sub
+	DonorModel.findOne({userId: userId},'',function(err,donor){
+		if (err) console.error('Error getting', err);
+		res.json(donor);
+	});
+})
 	
 
 router.post('/',function(req, res){
@@ -36,6 +44,7 @@ router.post('/',function(req, res){
 		fullName: req.body.fullName,
 		email: req.body.email,
 		address: req.body.address,
+		city: req.body.city,
 		state: req.body.state,
 		zip: req.body.zip,
 		importance: req.body.importance,
@@ -53,14 +62,11 @@ router.post('/',function(req, res){
 router.put('/',function(req, res){
 	var id = req.body.id;
 	var updateInfo = {
-		userId: req.user.sub,
 		fullName: req.body.fullName,
-		email: req.body.email,
 		address: req.body.address,
+		city: req.body.city,
 		state: req.body.state,
-		zip: req.body.zip,
-		importance: req.body.importance,
-		cause: req.body.cause
+		zip: req.body.zip
 	};
 	DonorModel.findByIdAndUpdate(id, updateInfo, function(err,post){
 		if (err) console.error(err);
