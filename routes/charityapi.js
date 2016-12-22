@@ -5,7 +5,8 @@ var express = require('express'),
 
 
 router.get('/',function(req, res){
-	CharityModel.find({},'',function(err,charity){
+	var userId = req.user.sub;
+	CharityModel.findOne({userId: userId},'',function(err,charity){
 		if (err) console.error('Error getting', err);
 		res.json(charity);
 	});
