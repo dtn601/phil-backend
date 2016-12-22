@@ -8,6 +8,7 @@ var schema = new mongoose.Schema({
 	state: { type: String, required: true },
 	zip: { type: String, required: true },
 	dropoff: { type: String, required: true },
+	cause: {type: String, required: true},
 	needs: String,
 	limitations: String,
 	instructions: String
