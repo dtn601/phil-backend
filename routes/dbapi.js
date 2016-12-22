@@ -53,7 +53,7 @@ router.post('/',function(req, res){
 router.put('/',function(req, res){
 	var id = req.body.id;
 	var updateInfo = {
-		userId: req.body.sub,
+		userId: req.user.sub,
 		fullName: req.body.fullName,
 		email: req.body.email,
 		address: req.body.address,
