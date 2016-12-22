@@ -1,7 +1,7 @@
 var express = require('express'),
 	router = express.Router(),
 
-	CharityModel = require('../models/charityinfo.js');
+	CharityModel = require('../models/charityinfo');
 
 
 router.get('/',function(req, res){
@@ -14,7 +14,7 @@ router.get('/',function(req, res){
 router.post('/',function(req, res){
 	var charityInfo = {
 		userId: req.user.sub,
-		charity: req.body.charityName,
+		charity: req.body.charity,
 		email: req.body.email,
 		address: req.body.address,
 		state: req.body.state,
@@ -28,7 +28,7 @@ router.post('/',function(req, res){
 
 	};
 
-	var newCharity = new ChairtyModel(charityInfo);
+	var newCharity = new CharityModel(charityInfo);
 
 	newCharity.save(function(err,success){
 		res.json(success);
@@ -39,7 +39,7 @@ router.put('/',function(req, res){
 	var id = req.body.id;
 	var updateInfo = {
 		userId: req.user.sub,
-		charity: req.body.charityName,
+		charity: req.body.charity,
 		email: req.body.email,
 		address: req.body.address,
 		city: req.body.city,
