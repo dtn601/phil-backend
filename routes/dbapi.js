@@ -1,4 +1,3 @@
-
 var express = require('express'),
 	router = express.Router(),
 	DonorModel = require('../models/donorinfo');
@@ -14,7 +13,7 @@ router.get('/',function(req, res){
 		if (err) console.error(err);
 		if (donor.length) {
 			console.log(donor.length)
-		res.send('donerhtml');
+		res.send('donorhtml');
 		} else {
 			CharityModel.find({userId: userId},'',function(err,char){
 				console.log(char.length)
